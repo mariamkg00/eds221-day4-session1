@@ -4,6 +4,10 @@ format: html
 editor: visual
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Functions
 
 a function that doubles a value
@@ -116,6 +120,47 @@ logistic_growth <- function(N0, K, r, time) {
 logistic_growth(N0 = 100, K = 6000, r = 0.27, time = 40)
 ```
 
-```{r}
+## More functions
 
+making a data frame and function will return a single row, like making a subset within a function
+
+Make a subset within a function , and then return something based on that subset
+
+```{r}
+dog_choice <- data.frame(dog_name= c("Khora","Teddy","Waffle","Banjo","Tallie"),
+                                 food =c("everything",
+                                           "salmon","pancakes","chicken","enchiladas"))
+```
+
+```{r}
+dog_menu <- function(enter_dog_name){
+  selected_dog <- filter(dog_choice, dog_name == enter_dog_name)
+  print(paste("My name is", selected_dog$dog_name, "and my favorite food is",
+              selected_dog$food))
+}
+dog_menu("Khora")
+#given some dog name, subset only stores one row and we will pull information from that existing row, filtering a function , filtering data frame to single row. 
+
+#selected_dog is only keeping row in dog_choice data frame if dog name user enters matches. filter statement asks if it matches the name in each of the row, the only thing kept is the one row. 
+```
+
+## Function with a for loop 
+
+```{r}
+# if all the variables are numeric, then tell all the means. iterate from 1 to number of columns is in that data frame
+df_means <- function(df){
+  for (i in seq_along(df)){
+    col_mean <- mean(df[[i]], na.rm = TRUE)
+    column_name <- colnames(df[i])
+    print(paste("The mean value of", column_name, "is", col_mean))
+  }
+}
+```
+
+```{r}
+df_means(df = mtcars)
+```
+
+```{r}
+df_means(faithful)
 ```
