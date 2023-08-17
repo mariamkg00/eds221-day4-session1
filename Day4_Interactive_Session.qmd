@@ -144,7 +144,7 @@ dog_menu("Khora")
 #selected_dog is only keeping row in dog_choice data frame if dog name user enters matches. filter statement asks if it matches the name in each of the row, the only thing kept is the one row. 
 ```
 
-## Function with a for loop 
+## Function with a for loop
 
 ```{r}
 # if all the variables are numeric, then tell all the means. iterate from 1 to number of columns is in that data frame
@@ -163,4 +163,38 @@ df_means(df = mtcars)
 
 ```{r}
 df_means(faithful)
+```
+
+Making a function to calculate the Betz Limit:
+
+air density : kg/m\^3
+
+rotor radius: meters
+
+wind velocity : m/s
+
+power: watts
+
+```{r}
+#three different parameters
+calculate_betz_windpower <- function(air_density, 
+                                     rotor_radius, 
+                                     wind_velocity){
+  if (wind_velocity >130 ){
+    warning("Whoa, that is a pretty high wind speed, are you sure?")
+  }
+  if (rotor_radius <0 ){
+    stop("Rotor radius must be a positive value (meters)")
+  }
+  0.3 * air_density * pi * (rotor_radius ^ 2) * (wind_velocity ^ 3)
+  
+}
+
+calculate_betz_windpower(air_density = 1.2, rotor_radius = 30, wind_velocity = 50)
+
+calculate_betz_windpower(air_density = 1, rotor_radius = 20, wind_velocity = 1020)
+```
+
+```{r}
+calculate_betz_windpower(air_density = 1, rotor_radius = -20, wind_velocity = 1020)
 ```
