@@ -66,3 +66,41 @@ double_value2 <- function(dollars){
 }
 double_value2(dollars = 10)
 ```
+
+## Functions with conditionals 
+
+```{r}
+calculate_animal_age <- function(species, age_human_years) {
+  if (species == "dog"){
+    age_human_years * 7
+  } else if(species =="goat"){
+    age_human_years * 4.7
+  } else (
+    print("Please enter dog or goat.")
+  )
+}
+
+calculate_animal_age(species ="dog", age_human_years = 10)
+calculate_animal_age(species = "goat", age_human_years = 4)
+
+#what happens if i use calculate animal is whale? nothing happens
+calculate_animal_age(species = "whale", age_human_years = 10)
+#not evaluated if it doesn't mean the condition 
+```
+
+Write a function that, given temperature in Kelvin, if a user selects "metric" to the scale then return degrees Celsius, or if they select "english" then return degrees in Fahrenheit.
+
+```{r}
+# two arguments, input of temp in kelvin; and user selection of metric or english
+
+kelvin_conversion <- function(scale, temp_k){
+  if (scale =="metric")(
+    temp_k-273.15
+  )else if (scale == "english")(
+    ((temp_k- 273.15) *1.8) +32
+  ) else
+    print('Please enter metric or english.')
+}
+
+kelvin_conversion(scale= "metric", temp_k = 40)
+```
