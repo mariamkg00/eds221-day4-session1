@@ -67,7 +67,7 @@ double_value2 <- function(dollars){
 double_value2(dollars = 10)
 ```
 
-## Functions with conditionals 
+## Functions with conditionals
 
 ```{r}
 calculate_animal_age <- function(species, age_human_years) {
@@ -103,4 +103,19 @@ kelvin_conversion <- function(scale, temp_k){
 }
 
 kelvin_conversion(scale= "metric", temp_k = 40)
+```
+
+```{r}
+# Build & check the minimum function
+logistic_growth <- function(N0, K, r, time) {
+  Nt <- K / (1 + ((K - N0) / N0) * exp(-r * time))
+  print(Nt)
+}
+
+# Do the values check out when you test this? 
+logistic_growth(N0 = 100, K = 6000, r = 0.27, time = 40)
+```
+
+```{r}
+
 ```
